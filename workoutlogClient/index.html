@@ -8,10 +8,7 @@
 
 	<title>Workout Log</title>
 	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<!-- jQuery (necessary for Bootstrap's Javascript plugins)-->
-	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
 
 
 </head>
@@ -45,7 +42,7 @@
 
 
 	<!--DEFINE-->
-	<div class="tab-pane" id="define">
+	<div class="tab-pane fade" id="define">
 		<h2>Define</h2>
 			<label for="def-description">Description</label>
 			<textarea class="form-control" id="def-description" rows="3"></textarea>
@@ -57,6 +54,24 @@
 			</select>
 			<button id="def-save" class="btn btn-primary">Save</button>
 			</div>
+
+<!--Log-->
+	<div class="tab-pane fade" id="log">
+		<h2>log!</h2>
+		<label>Result</label>
+		<input type="text" class="form-control" id="log-result" />
+		<label>Workout Select:</label>
+		<select class="form-control" id="log-definition">
+		</select>
+		<label>notes</label>
+		<textarea class="form-control" id="log-definition" rows="3"></textarea>
+		<button id="log-save" class="btn btn-primary">Save</button>
+	</div>
+	<div class="tab-pane" id="history">
+		<h2>History</h2>
+		<ul class="list-group" id="history-list">
+		</ul>
+	</div>
 
 
 
@@ -107,12 +122,14 @@
 					</div>
 				</div>
 
-
-
-
+<!-- jQuery (necessary for Bootstrap's Javascript plugins)-->
+	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="./app.js"></script>
 	<script src="./user/auth.js"></script>
 	<script src="./workouts/define.js"></script>
+	<script src="./workouts/log.js"></script>
 </body>
 
 </html>

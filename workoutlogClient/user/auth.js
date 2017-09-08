@@ -6,12 +6,8 @@ $(function(){
 			var username = $("#su_username").val();
 			var password = $("#su_password").val();
 			//user object
-			var user={
-					user:{
-						username: username,
-						password: password
-						}
-			};
+			var user = { user: {username: username, password: password }}
+									
 			//signup post
 			var signup = $.ajax({
 				type:"POST",
@@ -24,6 +20,8 @@ $(function(){
 			signup.done(function(data){
 					if (data.sessionToken){
 						WorkoutLog.setAuthHeader(data.sessionToken);
+						WorkoutLog.definition.fetchAll();
+						WorkoutLog.log.fetchAll();
 						console.log("You made it!");
 						console.log(data.sessionToken);
 				}
@@ -32,7 +30,8 @@ $(function(){
 				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
 
-				}).fail(function(){
+				})
+				.fail(function(){
 				$("#su_error").text("There was an issue with sign up").show();
 				});
 		},
@@ -47,7 +46,7 @@ $(function(){
 			//login POST
 			var login = $.ajax({
 				type:"POST",
-				url: WorkoutLog.API_BASE+"login",
+				url: WorkoutLog.API_BASE + "login",
 				data:JSON.stringify(user),
 				contentType:"application/json"
 			});
@@ -57,7 +56,9 @@ $(function(){
 			login.done(function(data){
 				if(data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
-								}
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
+				}
 					$("#login-modal").modal("hide");
 					$(".disabled").removeClass("disabled");
 					$("#loginout").text("Logout");
