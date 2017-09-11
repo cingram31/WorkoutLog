@@ -17,11 +17,11 @@ module.exports=function(req, res, next){
 						res.status(401).send({error:'Not authorized'});
 					}
 				);
-			}else{
+			} else {
 				res.status(401).send({error: 'Not authorized'});
 			}
 		});
-	}else{
+	} else {
 		next();
 	}
 }
